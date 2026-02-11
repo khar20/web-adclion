@@ -1,17 +1,10 @@
 ---
 import SectionHeader from "./SectionHeader.astro";
 import Card from "./Card.astro";
-
-const results = [
-    { icon: "users", title: "Más reuniones" },
-    { icon: "filter", title: "Leads filtrados y más cierres" },
-    { icon: "hourglass", title: "Más tiempo productivo en dar el servicio" },
-    { icon: "graph", title: "Más facturación" },
-];
+import { results } from "../data/content";
 ---
 
 <section id="resultados" class="section">
-    <!-- Graphic Element: Bottom center glow -->
     <div class="graphic-glow glow-bottom"></div>
 
     <div class="container">
@@ -38,17 +31,17 @@ const results = [
     }
 
     .glow-bottom {
-        bottom: -100px;
+        bottom: -150px;
         left: 50%;
         transform: translateX(-50%);
-        width: 800px;
-        height: 400px;
+        width: 1000px;
+        height: 500px;
         background: radial-gradient(
-            circle,
-            rgba(37, 99, 235, 0.15) 0%,
-            transparent 70%
+            ellipse at center,
+            rgba(37, 99, 235, 0.25) 0%,
+            transparent 60%
         );
-        filter: blur(100px);
+        filter: blur(120px);
     }
 
     .grid {

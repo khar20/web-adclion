@@ -1,11 +1,14 @@
+---
+import { ctaContent } from "../data/content";
+---
+
 <section id="demo" class="cta-section">
     <div class="texture"></div>
+    <div class="glow-overlay"></div>
     <div class="container fade-up">
-        <h2>
-            Agenda una reunión de 15 minutos<br />y te mostramos el sistema.
-        </h2>
+        <h2><Fragment set:html={ctaContent.title} /></h2>
         <div class="btn-container">
-            <a href="#" class="btn btn-white">Agenda ahora</a>
+            <a href="#" class="btn btn-white">{ctaContent.button}</a>
         </div>
     </div>
 </section>
@@ -28,14 +31,27 @@
         position: absolute;
         inset: 0;
         background-image:
-            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
             linear-gradient(
                 90deg,
-                rgba(255, 255, 255, 0.05) 1px,
+                rgba(255, 255, 255, 0.15) 1px,
                 transparent 1px
             );
-        background-size: 50px 50px;
-        opacity: 0.6;
+        background-size: 60px 60px;
+        opacity: 0.5;
+    }
+
+    .glow-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at top,
+            rgba(255, 255, 255, 0.2) 0%,
+            transparent 70%
+        );
     }
 
     h2 {
@@ -45,6 +61,7 @@
         font-weight: 700;
         position: relative;
         z-index: 2;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .btn-container {
@@ -56,6 +73,7 @@
     .btn-white {
         padding: 18px 40px;
         font-size: 1.2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     @media (max-width: 768px) {

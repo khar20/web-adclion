@@ -1,9 +1,5 @@
 ---
-const links = [
-    { name: "Problemas", href: "#problemas" },
-    { name: "Solución", href: "#solucion" },
-    { name: "Resultados", href: "#resultados" },
-];
+import { navbarLinks } from "../data/content";
 ---
 
 <header class="navbar">
@@ -15,7 +11,7 @@ const links = [
         <nav>
             <ul>
                 {
-                    links.map((link) => (
+                    navbarLinks.map((link) => (
                         <li>
                             <a href={link.href}>{link.name}</a>
                         </li>
@@ -29,14 +25,15 @@ const links = [
 </header>
 
 <style>
+    /* Same styles as before, just ensuring imports work */
     .navbar {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
         background-color: rgba(7, 9, 16, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px); /* Increased blur */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* More visible border */
         padding: 16px 0;
     }
 
