@@ -18,7 +18,12 @@ import { heroContent } from "../data/content";
             {heroContent.subtitle}
         </p>
         <div class="fade-up delay-200">
-            <a href="#demo" class="btn">
+            <!-- Calendly Button -->
+            <a
+                href="#"
+                onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
+                class="btn"
+            >
                 {heroContent.cta} &rarr;
             </a>
         </div>

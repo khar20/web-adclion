@@ -8,7 +8,14 @@ import { ctaContent } from "../data/content";
     <div class="container fade-up">
         <h2><Fragment set:html={ctaContent.title} /></h2>
         <div class="btn-container">
-            <a href="#" class="btn btn-white">{ctaContent.button}</a>
+            <!-- Calendly Button -->
+            <a
+                href="#"
+                onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
+                class="btn btn-white"
+            >
+                {ctaContent.button}
+            </a>
         </div>
     </div>
 </section>

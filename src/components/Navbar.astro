@@ -20,20 +20,26 @@ import { navbarLinks } from "../data/content";
             </ul>
         </nav>
 
-        <a href="#demo" class="btn-sm">Agenda una demo</a>
+        <!-- Calendly Button -->
+        <a
+            href="#"
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
+            class="btn-sm"
+        >
+            Agenda una demo
+        </a>
     </div>
 </header>
 
 <style>
-    /* Same styles as before, just ensuring imports work */
     .navbar {
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
         background-color: rgba(7, 9, 16, 0.8);
-        backdrop-filter: blur(12px); /* Increased blur */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* More visible border */
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding: 16px 0;
     }
 
@@ -48,7 +54,8 @@ import { navbarLinks } from "../data/content";
         align-items: center;
         gap: 8px;
         font-weight: 700;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        letter-spacing: -0.5px;
     }
 
     nav ul {
