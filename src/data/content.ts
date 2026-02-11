@@ -43,3 +43,10 @@ export const footerLinks = [
     { name: 'Privacidad', href: '#' },
     { name: 'Contacto', href: '#' },
 ];
+
+export const errorPageContent = {
+    title: "404",
+    subtitle: "Página no encontrada",
+    description: "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    button: "Volver al inicio"
+};

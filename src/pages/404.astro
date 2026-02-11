@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { errorPageContent } from "../data/content";
+---
+
+<Layout title="404 - Página no encontrada">
+    <Navbar />
+    <main class="error-page">
+        <div class="hero-bg">
+            <div class="grid-pattern"></div>
+            <div class="glow-center"></div>
+        </div>
+
+        <div class="container content fade-up is-visible">
+            <h1 class="error-code">{errorPageContent.title}</h1>
+            <h2 class="error-subtitle">{errorPageContent.subtitle}</h2>
+            <p class="error-description">{errorPageContent.description}</p>
+            <a href="/" class="btn">{errorPageContent.button}</a>
+        </div>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .error-page {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 20px;
+        overflow: hidden;
+    }
+
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+    }
+
+    .grid-pattern {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.08) 1px,
+                transparent 1px
+            );
+        background-size: 50px 50px;
+        mask-image: radial-gradient(
+            circle at center,
+            black 30%,
+            transparent 80%
+        );
+        -webkit-mask-image: radial-gradient(
+            circle at center,
+            black 30%,
+            transparent 80%
+        );
+    }
+
+    .glow-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 800px;
+        height: 600px;
+        background: radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.3) 0%,
+            transparent 70%
+        );
+        filter: blur(100px);
+        opacity: 0.8;
+    }
+
+    .content {
+        max-width: 600px;
+    }
+
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 1rem;
+        background: linear-gradient(to bottom, #ffffff, var(--primary-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.3));
+    }
+
+    .error-subtitle {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: white;
+    }
+
+    .error-description {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .error-code {
+            font-size: 5rem;
+        }
+        .error-subtitle {
+            font-size: 1.5rem;
+        }
+    }
+</style>
