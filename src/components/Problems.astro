@@ -27,6 +27,8 @@ const problems = [
 ---
 
 <section id="problemas" class="section">
+    <div class="graphic-glow glow-left"></div>
+
     <div class="container">
         <div class="fade-up">
             <SectionHeader
@@ -46,8 +48,22 @@ const problems = [
 
 <style>
     .section {
-        padding: 140px 0;
+        position: relative;
+        padding: 200px 0;
     }
+
+    .glow-left {
+        top: 30%;
+        left: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.08) 0%,
+            transparent 70%
+        );
+    }
+
     .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

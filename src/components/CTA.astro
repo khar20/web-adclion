@@ -1,4 +1,5 @@
 <section id="demo" class="cta-section">
+    <div class="texture"></div>
     <div class="container fade-up">
         <h2>
             Agenda una reunión de 15 minutos<br />y te mostramos el sistema.
@@ -11,38 +12,58 @@
 
 <style>
     .cta-section {
+        position: relative;
         background-color: var(--primary-blue);
         text-align: center;
-        padding: 160px 20px;
+        padding: 180px 20px;
         background-image: radial-gradient(
             circle at center,
             #3b82f6 0%,
             #1d4ed8 100%
         );
+        overflow: hidden;
+    }
+
+    .texture {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px
+            );
+        background-size: 50px 50px;
+        opacity: 0.6;
     }
 
     h2 {
-        font-size: 3rem;
-        margin-bottom: 40px;
+        font-size: 3.5rem;
+        margin-bottom: 48px;
         color: white;
         font-weight: 700;
+        position: relative;
+        z-index: 2;
     }
 
     .btn-container {
-        margin-top: 20px;
+        margin-top: 24px;
+        position: relative;
+        z-index: 2;
     }
 
     .btn-white {
-        padding: 16px 32px;
-        font-size: 1.1rem;
+        padding: 18px 40px;
+        font-size: 1.2rem;
     }
 
     @media (max-width: 768px) {
         h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
         .cta-section {
-            padding: 100px 20px;
+            padding: 120px 20px;
         }
     }
 </style>
