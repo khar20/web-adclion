@@ -1,23 +1,28 @@
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="container content">
-        <h1>
+        <h1 class="fade-up">
             Un sistema con IA que te trae clientes <span class="highlight"
                 >cualificados</span
             > cada mes
         </h1>
-        <p class="subtitle">
+        <p class="subtitle fade-up delay-100">
             Automatizamos la captación, el seguimiento y la agenda de reuniones
             para negocios que venden servicios de alto valor.
         </p>
-        <a href="#demo" class="btn"> Agenda una demo de 15 min &rarr; </a>
+        <div class="fade-up delay-200">
+            <a href="#demo" class="btn"> Agenda una demo de 15 min &rarr; </a>
+        </div>
     </div>
 </section>
 
 <style>
     .hero {
         position: relative;
-        padding-top: 180px;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        padding-top: 120px;
         padding-bottom: 120px;
         text-align: center;
         overflow: hidden;
@@ -37,44 +42,61 @@
                 rgba(255, 255, 255, 0.03) 1px,
                 transparent 1px
             );
-        background-size: 40px 40px;
+        background-size: 50px 50px;
         background: radial-gradient(
             circle at 50% 30%,
-            rgba(37, 99, 235, 0.15) 0%,
+            rgba(37, 99, 235, 0.12) 0%,
             rgba(7, 9, 16, 0) 60%
         );
     }
 
     .content {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
     }
 
     h1 {
-        font-size: 3.5rem;
-        margin-bottom: 24px;
-        letter-spacing: -1px;
+        font-size: 4rem;
+        margin-bottom: 32px;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
     }
 
     .highlight {
         color: var(--accent-light);
+        position: relative;
+        display: inline-block;
+    }
+
+    .highlight::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 5px;
+        left: 0;
+        background: rgba(96, 165, 250, 0.2);
+        filter: blur(10px);
+        z-index: -1;
     }
 
     .subtitle {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
         color: var(--text-muted);
-        margin-bottom: 40px;
-        max-width: 600px;
+        margin-bottom: 48px;
+        max-width: 650px;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.6;
     }
 
     @media (max-width: 768px) {
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
         }
         .hero {
-            padding-top: 140px;
+            padding-top: 150px;
+            min-height: auto;
         }
     }
 </style>
