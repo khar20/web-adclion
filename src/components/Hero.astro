@@ -18,7 +18,6 @@ import { heroContent } from "../data/content";
             {heroContent.subtitle}
         </p>
         <div class="fade-up delay-200">
-            <!-- Calendly Button -->
             <a
                 href="#"
                 onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
@@ -63,12 +62,12 @@ import { heroContent } from "../data/content";
         background-size: 50px 50px;
         mask-image: radial-gradient(
             circle at center,
-            black 30%,
+            black 40%,
             transparent 85%
         );
         -webkit-mask-image: radial-gradient(
             circle at center,
-            black 30%,
+            black 40%,
             transparent 85%
         );
     }
@@ -78,11 +77,11 @@ import { heroContent } from "../data/content";
         top: -10%;
         left: 50%;
         transform: translateX(-50%);
-        width: 100%;
-        height: 600px;
+        width: 120%;
+        height: 70vh;
         background: radial-gradient(
             ellipse at top,
-            rgba(37, 99, 235, 0.3) 0%,
+            rgba(37, 99, 235, 0.4) 0%,
             rgba(7, 9, 16, 0) 70%
         );
         filter: blur(80px);
@@ -90,17 +89,18 @@ import { heroContent } from "../data/content";
 
     .top-light-core {
         position: absolute;
-        top: -150px;
+        top: -100px;
         left: 50%;
         transform: translateX(-50%);
-        width: 600px;
-        height: 300px;
+        width: 80%;
+        max-width: 600px;
+        height: 400px;
         background: radial-gradient(
             circle,
-            rgba(96, 165, 250, 0.4) 0%,
+            rgba(96, 165, 250, 0.5) 0%,
             transparent 60%
         );
-        filter: blur(60px);
+        filter: blur(70px);
     }
 
     .content {
@@ -116,14 +116,14 @@ import { heroContent } from "../data/content";
         background: linear-gradient(to bottom right, #ffffff 30%, #9ca3af 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
     }
 
     .highlight {
         -webkit-text-fill-color: var(--accent-light);
         color: var(--accent-light);
         position: relative;
-        text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        text-shadow: 0 0 30px rgba(96, 165, 250, 0.6);
     }
 
     .highlight::after {
@@ -133,8 +133,8 @@ import { heroContent } from "../data/content";
         height: 60%;
         bottom: 0px;
         left: -20%;
-        background: rgba(37, 99, 235, 0.4);
-        filter: blur(25px);
+        background: rgba(37, 99, 235, 0.5);
+        filter: blur(30px);
         z-index: -1;
         border-radius: 100%;
     }
@@ -155,6 +155,10 @@ import { heroContent } from "../data/content";
         .hero {
             min-height: auto;
             padding: 180px 0 100px 0;
+        }
+        .top-light {
+            height: 50vh;
+            opacity: 0.8;
         }
     }
 </style>
