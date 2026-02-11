@@ -1,0 +1,103 @@
+---
+const links = [
+    { name: "Problemas", href: "#problemas" },
+    { name: "Solución", href: "#solucion" },
+    { name: "Resultados", href: "#resultados" },
+];
+---
+
+<header class="navbar">
+    <div class="container nav-content">
+        <div class="logo">
+            <div class="logo-icon">A</div>
+            <span>ADClion</span>
+        </div>
+
+        <nav>
+            <ul>
+                {
+                    links.map((link) => (
+                        <li>
+                            <a href={link.href}>{link.name}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <a href="#demo" class="btn-sm">Agenda una demo</a>
+    </div>
+</header>
+
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(7, 9, 16, 0.8);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 16px 0;
+    }
+
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+    .logo-icon {
+        background-color: var(--primary-blue);
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        font-size: 0.8rem;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 32px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        transition: color 0.2s;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    .btn-sm {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .btn-sm:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            display: none;
+        }
+    }
+</style>

@@ -1,0 +1,87 @@
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="left">
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span>ADClion</span>
+            </div>
+            <p>Sistemas de automatización e inteligencia artificial.</p>
+        </div>
+
+        <div class="right">
+            <ul class="footer-links">
+                <li><a href="#">Términos</a></li>
+                <li><a href="#">Privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container copyright">
+        <p>© 2023 ADClion. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background-color: #05060a;
+        padding: 60px 0 20px 0;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 40px;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        color: white;
+        margin-bottom: 12px;
+    }
+
+    .logo-icon {
+        background-color: var(--primary-blue);
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        font-size: 0.7rem;
+    }
+
+    .left p {
+        max-width: 300px;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 24px;
+    }
+
+    .footer-links a:hover {
+        color: white;
+    }
+
+    .copyright {
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 20px;
+        font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            gap: 32px;
+        }
+    }
+</style>

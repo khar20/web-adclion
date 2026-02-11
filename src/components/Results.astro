@@ -1,0 +1,38 @@
+---
+import SectionHeader from "./SectionHeader.astro";
+import Card from "./Card.astro";
+
+const results = [
+    { icon: "users", title: "Más reuniones" },
+    { icon: "filter", title: "Leads filtrados y más cierres" },
+    { icon: "hourglass", title: "Más tiempo productivo en dar el servicio" },
+    { icon: "graph", title: "Más facturación" },
+];
+---
+
+<section id="resultados" class="section">
+    <div class="container">
+        <SectionHeader
+            title="Resultados"
+            subtitle="Lo que obtienes con nuestro sistema."
+        />
+        <div class="grid">
+            {
+                results.map((r) => (
+                    <Card icon={r.icon} title={r.title} centered={true} />
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .section {
+        padding: 80px 0;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+    }
+</style>
