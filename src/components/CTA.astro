@@ -1,31 +1,127 @@
 ---
-import { ctaContent } from "../data/content";
+import { ctaContent, contactForm } from "../data/content";
 ---
 
 <section id="demo" class="cta-section">
     <div class="texture"></div>
     <div class="glow-overlay"></div>
-    <div class="container fade-up">
-        <h2><Fragment set:html={ctaContent.title} /></h2>
-        <div class="btn-container">
-            <!-- Calendly Button -->
-            <a
-                href="#"
-                onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
-                class="btn btn-white"
-            >
-                {ctaContent.button}
-            </a>
+
+    <div class="container relative z-10">
+        <div class="cta-grid fade-up">
+            <div class="cta-text">
+                <h2>{ctaContent.title}</h2>
+                <p class="cta-subtitle">{ctaContent.subtitle}</p>
+
+                <div class="btn-container">
+                    <a
+                        href="#"
+                        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/adclion-ia/30min'});return false;"
+                        class="btn btn-white"
+                    >
+                        {ctaContent.button}
+                    </a>
+                    <p class="small-note">
+                        Recomendado para respuesta inmediata
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="contact-form" class="glass-form">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder={contactForm.name}
+                            required
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder={contactForm.email}
+                            required
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <input
+                            type="tel"
+                            name="phone"
+                            placeholder={contactForm.phone}
+                            required
+                        />
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="tos" name="tos" required />
+                        <label for="tos">{contactForm.tos}</label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        {contactForm.submit}
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+
+    if (form) {
+        const submitBtn = form.querySelector(
+            'button[type="submit"]',
+        ) as HTMLButtonElement;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            formData.append(
+                "access_key",
+                "7c5a6a8c-75f0-457d-90b4-3571949820a6",
+            );
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Enviando...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
+                        method: "POST",
+                        body: formData,
+                    },
+                );
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("¡Éxito! Tu mensaje ha sido enviado.");
+                    form.reset();
+                } else {
+                    alert("Error: " + data.message);
+                }
+            } catch (error) {
+                alert("Algo salió mal. Por favor intenta de nuevo.");
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+</script>
 
 <style>
     .cta-section {
         position: relative;
         background-color: var(--primary-blue);
-        text-align: center;
-        padding: 180px 20px;
+        padding: 140px 20px;
         background-image: radial-gradient(
             circle at center,
             #3b82f6 0%,
@@ -38,14 +134,15 @@ import { ctaContent } from "../data/content";
         position: absolute;
         inset: 0;
         background-image:
-            linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+            linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
             linear-gradient(
                 90deg,
-                rgba(255, 255, 255, 0.15) 1px,
+                rgba(255, 255, 255, 0.1) 1px,
                 transparent 1px
             );
         background-size: 60px 60px;
-        opacity: 0.5;
+        opacity: 0.4;
+        pointer-events: none;
     }
 
     .glow-overlay {
@@ -56,39 +153,157 @@ import { ctaContent } from "../data/content";
         height: 100%;
         background: radial-gradient(
             circle at top,
-            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.15) 0%,
             transparent 70%
         );
+        pointer-events: none;
     }
 
-    h2 {
-        font-size: 3.5rem;
-        margin-bottom: 48px;
+    .cta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .cta-text {
+        text-align: left;
         color: white;
-        font-weight: 700;
-        position: relative;
-        z-index: 2;
+    }
+
+    .cta-text h2 {
+        font-size: 3rem;
+        margin-bottom: 24px;
+        line-height: 1.1;
         text-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .btn-container {
-        margin-top: 24px;
-        position: relative;
-        z-index: 2;
+    .cta-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+        opacity: 0.9;
     }
 
     .btn-white {
-        padding: 18px 40px;
-        font-size: 1.2rem;
+        padding: 16px 32px;
+        font-size: 1.1rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        text-align: center;
     }
 
-    @media (max-width: 768px) {
-        h2 {
+    .small-note {
+        font-size: 0.8rem;
+        margin-top: 12px;
+        opacity: 0.7;
+        text-align: center;
+    }
+
+    .glass-form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 32px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 14px 16px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        color: white;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+    }
+
+    .input-group input:focus {
+        outline: none;
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .input-group input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 4px;
+    }
+
+    .checkbox-group input {
+        accent-color: white;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .checkbox-group label {
+        cursor: pointer;
+    }
+
+    .btn-submit {
+        margin-top: 8px;
+        padding: 14px;
+        background-color: white;
+        color: var(--primary-blue);
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition:
+            background-color 0.2s,
+            transform 0.2s;
+    }
+
+    .btn-submit:hover {
+        background-color: #f3f4f6;
+        transform: translateY(-2px);
+    }
+
+    .btn-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    @media (max-width: 900px) {
+        .cta-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .cta-text {
+            text-align: center;
+        }
+
+        .cta-text h2 {
             font-size: 2.2rem;
         }
+
+        .form-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
         .cta-section {
-            padding: 120px 20px;
+            padding: 100px 20px;
         }
     }
 </style>

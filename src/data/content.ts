@@ -34,8 +34,17 @@ export const results = [
 ];
 
 export const ctaContent = {
-    title: "Agenda una reunión de 15 minutos<br />y te mostramos el sistema.",
-    button: "Agenda ahora"
+    title: "Empieza a escalar tu negocio hoy",
+    subtitle: "Agenda una reunión directa o déjanos tus datos y te contactamos.",
+    button: "Agenda una demo ahora"
+};
+
+export const contactForm = {
+    name: "Nombre completo",
+    email: "Correo electrónico",
+    phone: "Número de teléfono",
+    tos: "Acepto la política de privacidad",
+    submit: "Enviar mensaje"
 };
 
 export const footerLinks = [
