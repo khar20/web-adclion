@@ -1,5 +1,7 @@
 ---
 import { footerLinks } from "../data/content";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
@@ -24,7 +26,7 @@ import { footerLinks } from "../data/content";
         </div>
     </div>
     <div class="container copyright">
-        <p>© 2023 ADClion. Todos los derechos reservados.</p>
+        <p>© {year} ADClion. Todos los derechos reservados.</p>
     </div>
 </footer>
 
